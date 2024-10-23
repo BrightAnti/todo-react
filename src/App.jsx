@@ -19,6 +19,14 @@ function App() {
     localStorage.setItem("toDolist", JSON.stringify(toDolist));
   }, [toDolist]);
 
+  useEffect(() => {
+    const resetEditMode = toDolist.map((task) => ({
+      ...task,
+      isEditing: false,
+    }));
+    setToDoList(resetEditMode);
+  }, []);
+
   const addTask = () => {
     if (newTask.trim() === "") return;
     const task = {
@@ -100,7 +108,9 @@ function App() {
   const toggleEditMode = (id) => {
     setToDoList(
       toDolist.map((task) =>
-        task.id === id ? { ...task, isEditing: !task.isEditing } : task
+        task.id === id
+          ? { ...task, isEditing: !task.isEditing }
+          : { ...task, isEditing: false }
       )
     );
   };

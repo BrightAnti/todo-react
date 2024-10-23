@@ -2,32 +2,88 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
+  width: 100%;
+}
+
+.task-input {
+  height: 5vh;
+  width: 685px;
+  padding-left: 10px;
+  border-radius: 5px;
+  padding: 6px;
+  margin-left: 1px;
+  font-size: 18px;
 }
 
 .task-list-item {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #f9f9f9;
+  height: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.task-display {
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
 .completed {
   text-decoration: line-through;
   color: gray;
+  margin-left: 10px;
+  opacity: 20%;
+}
+
+.task-text {
+  margin-left: 10px;
+  margin-right: 10px;
+  flex-grow: 1;
+  padding-top: 8px;
 }
 
 .button-container {
   display: flex;
-  gap: 10px;
-  color: black;
+  align-items: center;
+  gap: 1px;
+  flex-grow: 1;
 }
 
-.joint-button {
-  background-color: black;
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.edit-icon {
+  background-color: green;
   color: white;
   border-radius: 3px;
+  padding: 5px;
+}
+
+.delete-icon {
+  color: red;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 18px;
+}
+
+.save-icon {
+  color: blue;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.cancel-icon {
+  color: red;
+  border-radius: 3px;
+  padding: 5px;
 }

@@ -1,6 +1,7 @@
 body {
   background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20231001/pngtree-completed-to-do-list-icon-a-3d-rendering-of-a-notebook-image_13576111.png");
   height: 100vh;
+  overflow: hidden;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -15,9 +16,10 @@ body {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  padding: 20px;
+  /* max-width: 800px; */
+  width: 800px;
+  padding: 10px;
   margin: 50px auto;
-  height: auto;
+  height: 75vh;
   min-height: 400px;
 }
