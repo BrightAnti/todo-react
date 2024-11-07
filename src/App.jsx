@@ -29,9 +29,11 @@ function App() {
 
   const addTask = () => {
     if (newTask.trim() === "") return;
+    const capitalizedTask = newTask.charAt(0).toUpperCase() + newTask.slice(1);
     const task = {
       id: toDolist.length === 0 ? 1 : toDolist[toDolist.length - 1].id + 1,
-      taskName: newTask,
+      taskName: capitalizedTask,
+      // taskName: newTask,
       isEditing: false,
       completed: false,
     };

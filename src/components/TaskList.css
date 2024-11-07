@@ -39,7 +39,12 @@
   text-decoration: line-through;
   color: gray;
   margin-left: 10px;
-  opacity: 20%;
+  opacity: 90%;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 30%;
 }
 
 .task-text {
