@@ -19,7 +19,9 @@ function TaskInput({ newTask, handleChange, addTask }) {
           onKeyDown={handleKeyDown}
           onChange={handleChange}
         />
-        <button onClick={addTask}>Add Task</button>
+        <button onClick={addTask} aria-label="Add new task">
+          Add Task
+        </button>
       </div>
     </>
   );

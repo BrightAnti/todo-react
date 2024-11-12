@@ -3,6 +3,12 @@ import TaskInput from "./components/TaskInput";
 import TaskList from "./components/TaskList";
 import "./App.css";
 import Swal from "sweetalert2";
+import { DndContext, closestCenter } from "@dnd-kit/core";
+import {
+  SortableContext,
+  arrayMove,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
 
 function App() {
   const [newTask, setNewTask] = useState("");
@@ -125,6 +131,21 @@ function App() {
     );
   };
 
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
+    if (over && active.id !== over.id) {
+      // Get the current order of tasks
+      const oldIndex = toDolist.findIndex((task) => task.id === active.id);
+      const newIndex = toDolist.findIndex((task) => task.id === over.id);
+
+      // Move the task and update the state
+      const newToDoList = arrayMove(toDolist, oldIndex, newIndex);
+
+      // Update the state with the new order
+      setToDoList(newToDoList);
+    }
+  };
+
   return (
     <div className="app-container">
       <TaskInput
@@ -132,13 +153,21 @@ function App() {
         handleChange={handleChange}
         addTask={addTask}
       />
-      <TaskList
-        tasks={toDolist}
-        deleteTask={deleteTask}
-        toggleEditMode={toggleEditMode}
-        editTask={editTask}
-        toggleCompletion={toggleCompletion}
-      />
+
+      <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+        <SortableContext
+          items={toDolist.map((task) => task.id)}
+          strategy={verticalListSortingStrategy}
+        >
+          <TaskList
+            tasks={toDolist}
+            deleteTask={deleteTask}
+            toggleEditMode={toggleEditMode}
+            editTask={editTask}
+            toggleCompletion={toggleCompletion}
+          />
+        </SortableContext>
+      </DndContext>
     </div>
   );
 }
